@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mycronjob
+spec:
+  # Một phút chạy một Job
+  schedule: "*/1 * * * *"
+
+  # Số Job lưu lại
+  # if you will set it to 0, POD will get removed as soon as it complete it's execution successfully
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 3
+
+  jobTemplate:
+    spec:
+      # The Job will be eligible to be automatically deleted, xx seconds after it finishes.
+      # If the field is set to 0, the Job will be eligible to be automatically deleted immediately after it finishes
+      ttlSecondsAfterFinished: 30
+
+      # Restart Pod Times before a Job is failed
+      backoffLimit: 3
+
+      template:
+        spec:
+          containers:
+            - name: busybox
+              image: busybox
+              args:
+                - /bin/sh
+                - -c
+                - date; echo "Job in CronJob"
+          restartPolicy: Never
