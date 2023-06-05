@@ -1,7 +1,11 @@
 '''
 Decorator
     - Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác 
-    và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.
+    và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó
+    - Trả về một hàm khác
+    - Nếu hàm wrapper() của bạn đơn giản, bạn có thể sử dụng hàm lambda
+    - Nếu logic của bạn quá phức tạp và không thể trình bày trong một hàm,
+    có thể bạn sẽ cần đến lớp decorator
 '''
 
 import time
@@ -38,8 +42,14 @@ def cube(numbers):
     
     return result
 
-numbers = range(1,100000)
+numbers = range(1,10)
 
-square(numbers)
+a = square(numbers)
+print(a)
 
-cube(numbers)
+c = cal_time(cube)
+d = c(numbers)  # thực chất là timer()
+print(d)
+
+b = cube(numbers)  
+print(b)
