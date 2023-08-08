@@ -20,7 +20,7 @@ class SieuNhan:
 A = SieuNhan('do')
 A.in_ten
 
-A.ten = 'xanh'
+A.in_ten = 'xanh'
 A.in_ten
 
 del A.in_ten
