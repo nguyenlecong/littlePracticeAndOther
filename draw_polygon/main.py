@@ -27,10 +27,15 @@ def run( path):
             break
         
         if is_first_frame:
-            points = pd.run(window_name, frame)            
+            mode='RECT'
+            points = pd.run(window_name, frame, mode)            
             is_first_frame = False
         
-        cv2.polylines(frame, np.array([points]), True, FINAL_LINE_COLOR, 2, cv2.LINE_AA)
+        if mode == 'POLYGON':
+            cv2.polylines(frame, np.array([points]), True, FINAL_LINE_COLOR, 2, cv2.LINE_AA)
+        elif mode == 'RECT':
+            cv2.rectangle(frame, points[0], points[1], FINAL_LINE_COLOR, 2, cv2.LINE_AA)
+        
         cv2.imshow(window_name, frame)
         if cv2.waitKey(1) & 0xFF == ord('q'): 
             break
