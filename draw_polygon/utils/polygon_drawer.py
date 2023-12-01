@@ -36,12 +36,9 @@ class PolygonDrawer(object):
             
             elif mode == 'RECT':
                 if len(self.points) == 1:
-                    end_point = self.current
+                    cv2.rectangle(canvas, self.points[0], self.current, WORKING_LINE_COLOR, 2, cv2.LINE_AA)
                 if len(self.points) == 2:
-                    end_point = self.points[1]
                     self.done = True
-                if len(self.points) > 0:
-                    cv2.rectangle(canvas, self.points[0], end_point, WORKING_LINE_COLOR, 2, cv2.LINE_AA)
 
                 cv2.imshow(window_name, canvas)
                 cv2.waitKey(1)
