@@ -38,6 +38,7 @@
 |s.accept()|Thiết lập kết nối giữa Client-Server|
 
 - **Client Socket Methods**
+
 |Method|Description|
 |------|-----------|
 |s.connect()|Kết nối đến Server|
