@@ -54,4 +54,11 @@
 |s.close()|Đóng kết nối|
 |socket.gethostname()|Trả về tên của host|
 
+- **FastAPI WebSockets[^2]**
+  - `python -m uvicorn fastapi_server:app --host 0.0.0.0 --port 8000 --reload`
+  - Handling disconnections and multiple clients:
+    - When a WebSocket connection is closed, the await websocket.receive_text() will raise a **WebSocketDisconnect** exception, which you can then catch and handle
+    - 
+
 [^1]: [Python Sockets](https://pailema.edu.vn/cdn/uploadv2/news/1582267553_basic_lesson-13-python-socket.pdf)
+[^2]: [WebSockets](https://fastapi.tiangolo.com/advanced/websockets/)
